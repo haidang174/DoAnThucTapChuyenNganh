@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.wrapper {
+  width: 400px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 10;
+}
+
+/* Headings */
+h1 {
+  color: #fff;
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  background: linear-gradient(45deg, #f72585, #7209b7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Input boxes */
+.input-box {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 15px 20px 15px 45px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 30px;
+  outline: none;
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.input-box input:focus {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 10px rgba(247, 37, 133, 0.3);
+}
+
+.input-box i {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  opacity: 0.7;
+  font-size: 1.2rem;
+}
+
+/* Remember / Forget */
+.remember-forget {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.remember-forget a {
+  color: #f72585;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.remember-forget a:hover {
+  text-decoration: underline;
+}
+
+/* Buttons */
+.auth-page .btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(45deg, #7209b7, #f72585);
+  border: none;
+  border-radius: 30px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.auth-page .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(247, 37, 133, 0.4);
+}
+
+/* Register / Login link */
+.register-link {
+  text-align: center;
+  margin-top: 20px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+
+.register-link a,
+.register-link span {
+  color: #f72585;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.register-link a:hover,
+.register-link span:hover {
+  text-decoration: underline;
+}

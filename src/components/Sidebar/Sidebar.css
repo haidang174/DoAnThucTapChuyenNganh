@@ -40,7 +40,8 @@
   transition: all 0.3s ease;
 }
 
-.nav .nav-top span {
+.nav .nav-top span,
+.nav-bottom span {
   font-weight: bold;
 }
 
