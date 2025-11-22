@@ -19,7 +19,6 @@ const MusicPlayer = ({ playlist }) => {
   const [duration, setDuration] = useState(0);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("lyrics");
-  const [comments, setComments] = useState([]);
 
   const audioRef = useRef(null);
 
@@ -27,16 +26,23 @@ const MusicPlayer = ({ playlist }) => {
 
   // ---------------- Load / Play song ----------------
   useEffect(() => {
-    if (!audioRef.current || !currentSong) return;
+    const audio = audioRef.current;
+    if (!audio || !currentSong) return;
 
-    audioRef.current.src = currentSong.src;
-    audioRef.current.load();
-    audioRef.current.volume = volume / 100;
+    audio.src = currentSong.src;
+    audio.load();
+    if (isPlaying) audio.play().catch(err => console.error(err));
+  }, [currentIndex, currentSong]); // Chỉ khi đổi bài hát
 
+  // Quản lý play/pause
+  useEffect(() => {
+    if (!audioRef.current) return;
     if (isPlaying) {
-      audioRef.current.play().catch(err => console.error("Lỗi phát nhạc:", err));
+      audioRef.current.play().catch(err => console.error(err));
+    } else {
+      audioRef.current.pause(); // pause sẽ không reset
     }
-  }, [currentIndex, currentSong, isPlaying, volume]);
+  }, [isPlaying]);
 
   // ---------------- Play / Pause ----------------
   const togglePlayPause = () => {
@@ -106,7 +112,7 @@ const MusicPlayer = ({ playlist }) => {
       audio.removeEventListener("loadedmetadata", updateTime);
       audio.removeEventListener("ended", handleEnded);
     };
-  }, [isRepeat, currentIndex, playlist]);
+  }, [isRepeat, currentIndex]);
 
   const handleProgressChange = value => {
     if (!audioRef.current) return;
@@ -125,9 +131,6 @@ const MusicPlayer = ({ playlist }) => {
 
   // ---------------- Sidebar ----------------
   const toggleSidebar = () => setIsSidebarOpen(prev => !prev);
-
-  // ---------------- Comments ----------------
-  const addComment = text => setComments(prev => [...prev, text]);
 
   return (
     <div className="music-player">
@@ -152,8 +155,12 @@ const MusicPlayer = ({ playlist }) => {
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         lyrics={currentSong.lyrics}
-        comments={comments}
-        addComment={addComment}
+        playlist={playlist}
+        currentIndex={currentIndex}
+        onSelectSong={index => {
+          setCurrentIndex(index);
+          setIsPlaying(true); // khi chọn bài hát, phát luôn
+        }}
       />
     </div>
   );
