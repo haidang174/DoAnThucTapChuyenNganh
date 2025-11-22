@@ -1,0 +1,116 @@
+header .header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 220px;
+  height: 90px;
+  background-color: #17171d;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+/* =================  Left Header =================  */
+header .header .left-header {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  width: 60%;
+}
+
+header .header .left-header .search {
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 80%;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+header .header .left-header .search i {
+  color: #fff;
+}
+
+header .header .left-header .search input {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+}
+
+/* =================  Right Header =================  */
+header .header .right-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 20px;
+  width: 30%;
+}
+
+header .header .right-header .profile i,
+header .header .right-header .username a {
+  color: #fff;
+  padding: 10px;
+}
+
+header .header .right-header .profile i:hover {
+  color: #f72585;
+  transition: all 0.3s ease;
+}
+
+.toggle-switch {
+  position: relative;
+  width: 50px;
+  height: 26px;
+}
+
+.switch-label {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #1a1a2e;
+  border-radius: 13px;
+  cursor: pointer;
+  border: 2px solid #1a1a2e;
+}
+
+.checkbox {
+  position: absolute;
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 13px;
+  transition: 0.3s;
+}
+
+.checkbox:checked ~ .slider {
+  background-color: #f72585;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  box-shadow: inset 8px -3px 0px 0px #f72585;
+  background-color: #1a1a2e;
+  transition: 0.3s;
+}
+
+.checkbox:checked ~ .slider::before {
+  transform: translateX(22px);
+  background-color: #1a1a2e;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}

@@ -1,0 +1,83 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 220px;
+  background-color: #17171d;
+}
+
+.sidebar .logo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 35.5px;
+  font-weight: bold;
+  gap: 6px;
+}
+
+.sidebar .logo a {
+  transition: all 0.3s ease;
+}
+
+.sidebar .logo a:hover {
+  text-shadow: 0 0 50px #7209b7;
+}
+
+.sidebar .logo i,
+.sidebar .logo a {
+  font-size: 1.9rem;
+  color: #f72585;
+}
+
+/* ================= Nav ================= */
+.nav {
+  width: 220px;
+}
+
+.nav a:hover {
+  color: #f72585;
+  transition: all 0.3s ease;
+}
+
+.nav .nav-top span {
+  font-weight: bold;
+}
+
+.nav .menu .navbar-item a {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  line-height: 2;
+  font-weight: 500;
+  padding: 15px 35px;
+  gap: 10px;
+}
+
+.nav .nav-top::after {
+  content: "";
+  margin: 15px 50px;
+  display: block;
+  height: 1px;
+  border-radius: 1px;
+  background: #626262;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #fff;
+  padding: 10px;
+  display: inline-block;
+}
+
+.nav .menu .navbar-item {
+  transition: background-color 0.3s, color 0.5s;
+}
+
+.nav .navbar-item.active {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav .navbar-item.active a {
+  color: #f72585;
+}
