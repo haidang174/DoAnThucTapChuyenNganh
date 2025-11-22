@@ -63,7 +63,7 @@ h1 {
   box-shadow: 0 0 10px rgba(247, 37, 133, 0.3);
 }
 
-.input-box i {
+.auth-page .input-box i {
   position: absolute;
   left: 15px;
   top: 50%;

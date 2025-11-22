@@ -1,7 +1,7 @@
 // import { useState } from "react";
 import Header from "./components/Header/Header";
 import Sidebar from "./components/Sidebar/Sidebar";
-import MainContent from "./components/MainContents/MainContent";
+// import MainContent from "./components/MainContents/MainContent";
 import MusicPlayer from "./components/MusicPlayer/MusicPlayer";
 import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
