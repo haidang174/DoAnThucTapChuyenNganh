@@ -1,0 +1,26 @@
+.library-section::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Phần "nút" scrollbar */
+.library-section::-webkit-scrollbar-thumb {
+  background-color: #92929d;
+  border-radius: 5px;
+}
+
+.library-section {
+  margin-top: 90px;
+  margin-left: 220px;
+  padding: 20px;
+  padding-bottom: 120px;
+  height: calc(100vh - 90px);
+  overflow-y: auto;
+  color: #fff;
+}
+.library-section h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+.library-section p {
+  font-size: 16px;
+}
