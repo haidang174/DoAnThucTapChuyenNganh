@@ -1,14 +1,14 @@
 /* Phần "nút" scrollbar */
-.explore::-webkit-scrollbar {
+.album::-webkit-scrollbar {
   width: 6px;
 }
 
-.explore::-webkit-scrollbar-thumb {
+.album::-webkit-scrollbar-thumb {
   background-color: #92929d;
   border-radius: 5px;
 }
 
-.explore {
+.album {
   margin-top: 90px;
   margin-left: 220px;
   padding: 20px;

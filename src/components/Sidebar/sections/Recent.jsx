@@ -1,8 +1,8 @@
 const Recent = () => {
   return (
-    <div>
-      <h2>Nghe gần đây</h2>
-      <p>Danh sách bài hát bạn đã nghe...</p>
+    <div className="recent">
+      <h2>Khám phá</h2>
+      <p>Hiển thị danh sách bài hát / chủ đề nổi bật...</p>
     </div>
   );
 };

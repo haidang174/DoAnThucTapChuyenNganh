@@ -1,8 +1,8 @@
 const Playlist = () => {
   return (
-    <div>
-      <h2>Playlist</h2>
-      <p>Tất cả playlist của bạn.</p>
+    <div className="playlist">
+      <h2>Khám phá</h2>
+      <p>Hiển thị danh sách bài hát / chủ đề nổi bật...</p>
     </div>
   );
 };

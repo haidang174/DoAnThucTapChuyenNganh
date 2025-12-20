@@ -1,8 +1,8 @@
 const Favorites = () => {
   return (
-    <div>
-      <h2>Bài hát yêu thích</h2>
-      <p>Những bài hát bạn đã đánh dấu yêu thích</p>
+    <div className="favorite">
+      <h2>Khám phá</h2>
+      <p>Hiển thị danh sách bài hát / chủ đề nổi bật...</p>
     </div>
   );
 };

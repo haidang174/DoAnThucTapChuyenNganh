@@ -1,8 +1,8 @@
 const Albums = () => {
   return (
-    <div>
-      <h2>Album</h2>
-      <p>Tất cả album bạn sở hữu</p>
+    <div className="album">
+      <h2>Khám phá</h2>
+      <p>Hiển thị danh sách bài hát / chủ đề nổi bật...</p>
     </div>
   );
 };

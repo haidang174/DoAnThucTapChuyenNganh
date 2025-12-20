@@ -1,14 +1,14 @@
-.library-section::-webkit-scrollbar {
+/* Phần "nút" scrollbar */
+.library::-webkit-scrollbar {
   width: 6px;
 }
 
-/* Phần "nút" scrollbar */
-.library-section::-webkit-scrollbar-thumb {
+.library::-webkit-scrollbar-thumb {
   background-color: #92929d;
   border-radius: 5px;
 }
 
-.library-section {
+.library {
   margin-top: 90px;
   margin-left: 220px;
   padding: 20px;
@@ -17,10 +17,12 @@
   overflow-y: auto;
   color: #fff;
 }
-.library-section h2 {
+
+.library h2 {
   font-size: 28px;
   margin-bottom: 10px;
 }
-.library-section p {
+
+.library p {
   font-size: 16px;
 }

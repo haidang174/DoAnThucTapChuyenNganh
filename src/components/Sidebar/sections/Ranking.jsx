@@ -1,8 +1,8 @@
 const Ranking = () => {
   return (
-    <div>
-      <h2>Bảng xếp hạng</h2>
-      <p>Top bài hát nổi bật trong tuần...</p>
+    <div className="ranking">
+      <h2>Khám phá</h2>
+      <p>Hiển thị danh sách bài hát / chủ đề nổi bật...</p>
     </div>
   );
 };
