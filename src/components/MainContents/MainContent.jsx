@@ -1,4 +1,5 @@
-import { useLocation } from "react-router-dom";
+import useMainContent from "../../hooks/mainContent/useMainContent.js";
+
 import Library from "../Sidebar/sections/Library";
 import Explore from "../Sidebar/sections/Explore";
 import Ranking from "../Sidebar/sections/Ranking.jsx";
@@ -9,8 +10,7 @@ import Playlist from "../Sidebar/sections/Playlist.jsx";
 import Albums from "../Sidebar/sections/Albums.jsx";
 
 const MainContent = () => {
-  const location = useLocation();
-  const path = location.pathname;
+  const { path } = useMainContent();
 
   switch (path) {
     case "/library":

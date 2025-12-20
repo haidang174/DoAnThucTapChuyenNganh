@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useState } from "react";
+
 import Header from "./components/Header/Header";
 import Sidebar from "./components/Sidebar/Sidebar";
 import MainContent from "./components/MainContents/MainContent";
@@ -7,8 +9,8 @@ import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
 
 function App() {
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
-  // const [showLogin, setShowLogin] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showLogin, setShowLogin] = useState(true);
 
   const playlist = [
     {
@@ -34,24 +36,24 @@ function App() {
     }
   ];
 
-  // const handleLogin = ({ username, password }) => {
-  //   // Xử lý logic đăng nhập API nếu muốn
-  //   console.log("Đăng nhập:", username, password);
-  //   setIsLoggedIn(true);
-  // };
+  const handleLogin = ({ username, password }) => {
+    // Xử lý logic đăng nhập API nếu muốn
+    console.log("Đăng nhập:", username, password);
+    setIsLoggedIn(true);
+  };
 
-  // const handleRegister = ({ username, email, password, birthDate }) => {
-  //   // Xử lý logic đăng ký API nếu muốn
-  //   console.log("Đăng ký:", username, email, password, birthDate);
-  //   setIsLoggedIn(true);
-  // };
+  const handleRegister = ({ username, email, password, birthDate }) => {
+    // Xử lý logic đăng ký API nếu muốn
+    console.log("Đăng ký:", username, email, password, birthDate);
+    setIsLoggedIn(true);
+  };
 
-  // const switchToLogin = () => setShowLogin(true);
-  // const switchToRegister = () => setShowLogin(false);
+  const switchToLogin = () => setShowLogin(true);
+  const switchToRegister = () => setShowLogin(false);
 
-  // if (!isLoggedIn) {
-  //   return showLogin ? <Login onLogin={handleLogin} switchToRegister={switchToRegister} /> : <Register onRegister={handleRegister} switchToLogin={switchToLogin} />;
-  // }
+  if (!isLoggedIn) {
+    return showLogin ? <Login onLogin={handleLogin} switchToRegister={switchToRegister} /> : <Register onRegister={handleRegister} switchToLogin={switchToLogin} />;
+  }
 
   return (
     <div className="app">
