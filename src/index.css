@@ -10,7 +10,6 @@ html {
   --primary-color: #f72585;
   --secondary-color: #1a1a2e;
   --dark-theme-color: var(--secondary-color);
-  --light-theme-color: linear-gradient(to bottom, #f72585, #7209b7);
   --text-color: #fff;
   --text-secondary: #ccc;
   --bg-color: #17171d;

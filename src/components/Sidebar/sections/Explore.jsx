@@ -3,7 +3,7 @@ import useExplore from "../../../hooks/sidebar/section/useExplore";
 import "./Explore.css";
 
 const Explore = ({ onPlaySong, onPlayPlaylist }) => {
-  const { songs, albums, genres, isLoading, error, loadData, formatDuration, handlePlaySong, handlePlayAlbum } = useExplore();
+  const { songs, albums, genres, isLoading, error, loadData, formatDuration, handlePlaySong, handlePlayAlbum, handleGenreClick } = useExplore();
 
   if (isLoading) {
     return (
@@ -38,8 +38,7 @@ const Explore = ({ onPlaySong, onPlayPlaylist }) => {
         </div>
         <div className="genres-grid">
           {genres.map(genre => (
-            <div key={genre.IDGenre} className="genre-card">
-              <div className="genre-icon">🎵</div>
+            <div key={genre.IDGenre} className="genre-card" onClick={() => handleGenreClick(genre)}>
               <h3 className="genre-name">{genre.GenreName}</h3>
             </div>
           ))}

@@ -1,9 +1,11 @@
 // src/hooks/sidebar/section/useExplore.js
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { getAllSongsService, getAllAlbumsService, getAllGenresService } from "../../../services/mockServices";
 import { formatSongsForPlayer } from "../../../data/mockData";
 
 const useExplore = () => {
+  const navigate = useNavigate();
   const [songs, setSongs] = useState([]);
   const [albums, setAlbums] = useState([]);
   const [genres, setGenres] = useState([]);
@@ -56,12 +58,27 @@ const useExplore = () => {
     if (onPlayPlaylist) {
       try {
         const albumSongs = album.Songs || [];
+
+        if (albumSongs.length === 0) {
+          return;
+        }
+
         const formattedSongs = formatSongsForPlayer(albumSongs);
-        onPlayPlaylist(formattedSongs, 0);
+        const validSongs = formattedSongs.filter(song => song !== null);
+
+        if (validSongs.length === 0) {
+          return;
+        }
+
+        onPlayPlaylist(validSongs, 0);
       } catch (err) {
-        console.error(err);
+        console.error("Lỗi phát album:", err);
       }
     }
+  };
+
+  const handleGenreClick = genre => {
+    navigate("/category", { state: { selectedGenre: genre } });
   };
 
   return {
@@ -73,7 +90,8 @@ const useExplore = () => {
     loadData,
     formatDuration,
     handlePlaySong,
-    handlePlayAlbum
+    handlePlayAlbum,
+    handleGenreClick
   };
 };
 
