@@ -33,78 +33,25 @@
 }
 
 /* ============================================
-   HEADER SECTION
+   SECTION LAYOUT
    ============================================ */
-.subtitle {
-  color: #b3b3b3;
-  font-size: 15px;
-  font-weight: 400;
+
+.explore-section {
+  margin-bottom: 60px;
 }
 
-/* ============================================
-   TABS NAVIGATION
-   ============================================ */
-
-.explore-tabs {
+.section-header {
   display: flex;
-  gap: 12px;
-  margin-bottom: 40px;
-  border-bottom: 1px solid #2a2a2a;
-  padding-bottom: 10px;
-  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
 }
 
-.tab-button {
-  padding: 10px 24px;
-  border: none;
-  background: transparent;
-  color: #b3b3b3;
-  font-size: 15px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border-radius: 8px;
-  position: relative;
-}
-
-.tab-button:hover {
+.section-title {
+  font-size: 28px;
+  font-weight: 700;
   color: #fff;
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.tab-button.active {
-  color: #1db954;
-  background: rgba(29, 185, 84, 0.1);
-}
-
-.tab-button.active::after {
-  content: "";
-  position: absolute;
-  bottom: -10px;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: #1db954;
-  border-radius: 2px 2px 0 0;
-}
-
-/* ============================================
-   CONTENT AREA
-   ============================================ */
-
-.explore-content {
-  animation: fadeIn 0.3s ease-in;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  margin: 0;
 }
 
 /* ============================================
@@ -315,14 +262,15 @@
 
 .genres-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
 }
 
 .genre-card {
   background: linear-gradient(135deg, #1db954 0%, #1ed760 100%);
-  border-radius: 16px;
-  padding: 32px 24px;
+  border-radius: 12px;
+  padding: 24px 16px;
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: center;
@@ -352,14 +300,14 @@
 }
 
 .genre-icon {
-  font-size: 48px;
-  margin-bottom: 12px;
+  font-size: 36px;
+  margin-bottom: 8px;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
 }
 
 .genre-name {
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 600;
   color: #fff;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
@@ -449,6 +397,10 @@
   .explore-container {
     left: 0;
     padding: 20px 16px;
+  }
+
+  .explore-header h1 {
+    font-size: 28px;
   }
 
   .songs-grid,

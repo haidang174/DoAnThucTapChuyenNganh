@@ -491,14 +491,18 @@ export const formatSongForPlayer = song => {
   if (!song) return null;
 
   return {
-    id: song.IDSong,
-    title: song.Title,
-    singer: getArtistNamesBySongId(song.IDSong),
-    src: song.Path,
-    img: song.Avatar,
-    lyrics: song.Lyrics,
-    duration: song.Duration,
-    views: song.Views
+    id: song.IDSong || song.id,
+    title: song.Title || song.title || "Unknown",
+    singer: song.Artists || getArtistNamesBySongId(song.IDSong) || song.singer || "Unknown Artist",
+    src: song.Path || song.src || "",
+    img: song.Avatar || song.img || "/assets/icon/pulse.png",
+    lyrics: song.Lyrics || song.lyrics || "",
+    duration: song.Duration || song.duration || "00:00:00",
+    views: song.Views || song.views || 0,
+    // Giữ nguyên các thuộc tính gốc để fallback
+    Avatar: song.Avatar || song.img,
+    Artists: song.Artists || song.singer,
+    Title: song.Title || song.title
   };
 };
 
