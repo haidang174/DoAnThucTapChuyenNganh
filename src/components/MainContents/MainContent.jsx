@@ -1,3 +1,4 @@
+// src/components/MainContents/MainContent.jsx
 import useMainContent from "../../hooks/mainContent/useMainContent.js";
 
 import Library from "../Sidebar/sections/Library";
@@ -9,28 +10,28 @@ import Favorite from "../Sidebar/sections/Favorite.jsx";
 import Playlist from "../Sidebar/sections/Playlist.jsx";
 import Albums from "../Sidebar/sections/Albums.jsx";
 
-const MainContent = () => {
+const MainContent = ({ currentUser, onPlaySong, onPlayPlaylist }) => {
   const { path } = useMainContent();
 
   switch (path) {
     case "/library":
-      return <Library />;
+      return <Library currentUser={currentUser} onPlaySong={onPlaySong} />;
     case "/explore":
-      return <Explore />;
+      return <Explore currentUser={currentUser} onPlaySong={onPlaySong} onPlayPlaylist={onPlayPlaylist} />;
     case "/ranking":
-      return <Ranking />;
+      return <Ranking currentUser={currentUser} onPlaySong={onPlaySong} />;
     case "/category":
-      return <Categories />;
+      return <Categories currentUser={currentUser} onPlaySong={onPlaySong} />;
     case "/recent":
-      return <Recent />;
+      return <Recent currentUser={currentUser} onPlaySong={onPlaySong} />;
     case "/favorite":
-      return <Favorite />;
+      return <Favorite currentUser={currentUser} onPlaySong={onPlaySong} />;
     case "/playlist":
-      return <Playlist />;
+      return <Playlist currentUser={currentUser} onPlaySong={onPlaySong} onPlayPlaylist={onPlayPlaylist} />;
     case "/album":
-      return <Albums />;
+      return <Albums currentUser={currentUser} onPlaySong={onPlaySong} onPlayPlaylist={onPlayPlaylist} />;
     default:
-      return <Explore />; // mặc định
+      return <Explore currentUser={currentUser} onPlaySong={onPlaySong} onPlayPlaylist={onPlayPlaylist} />; // mặc định
   }
 };
 

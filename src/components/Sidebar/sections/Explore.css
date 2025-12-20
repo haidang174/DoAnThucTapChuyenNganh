@@ -1,309 +1,473 @@
-/* Scrollbar */
-.explore::-webkit-scrollbar {
-  width: 6px;
-}
+/* ============================================
+   EXPLORE CONTAINER - Main Layout
+   ============================================ */
 
-.explore::-webkit-scrollbar-thumb {
-  background-color: #92929d;
-  border-radius: 5px;
-}
-
-.explore::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.explore {
+.explore-container {
   position: fixed;
   top: 90px;
   left: 220px;
   right: 0;
   bottom: 90px;
-  padding: 20px;
+  padding: 30px;
   overflow-y: auto;
   color: #fff;
+  background: #0a0a0a;
 }
 
-/* Header */
-.explore-title {
-  font-size: 36px;
-  font-weight: bold;
-  margin-bottom: 10px;
+/* Scrollbar */
+.explore-container::-webkit-scrollbar {
+  width: 8px;
 }
 
-.explore-subtitle {
+.explore-container::-webkit-scrollbar-thumb {
+  background-color: #3e3e3e;
+  border-radius: 4px;
+}
+
+.explore-container::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+.explore-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ============================================
+   HEADER SECTION
+   ============================================ */
+.subtitle {
   color: #b3b3b3;
-  font-size: 14px;
+  font-size: 15px;
+  font-weight: 400;
 }
 
-/* Categories */
-.categories {
+/* ============================================
+   TABS NAVIGATION
+   ============================================ */
+
+.explore-tabs {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   margin-bottom: 40px;
+  border-bottom: 1px solid #2a2a2a;
+  padding-bottom: 10px;
   flex-wrap: wrap;
 }
 
-.category-btn {
-  padding: 8px 20px;
-  border-radius: 20px;
+.tab-button {
+  padding: 10px 24px;
   border: none;
-  background: #2a2a3e;
+  background: transparent;
+  color: #b3b3b3;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  position: relative;
+}
+
+.tab-button:hover {
   color: #fff;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.3s;
+  background: rgba(255, 255, 255, 0.05);
 }
 
-.category-btn.active {
-  background: #1db954;
-}
-
-.category-btn:hover {
-  transform: scale(1.05);
-}
-
-/* Section */
-.explore-section {
-  margin-bottom: 50px;
-}
-
-.section-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.section-header svg {
+.tab-button.active {
   color: #1db954;
+  background: rgba(29, 185, 84, 0.1);
 }
 
-.section-title {
-  font-size: 24px;
-  font-weight: bold;
+.tab-button.active::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #1db954;
+  border-radius: 2px 2px 0 0;
 }
 
-/* Featured Playlists */
-.playlists-grid {
+/* ============================================
+   CONTENT AREA
+   ============================================ */
+
+.explore-content {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   SONGS GRID
+   ============================================ */
+
+.songs-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
 }
 
-.playlist-card {
-  background: #1e1e30;
-  border-radius: 12px;
-  padding: 16px;
+.song-card {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 16px;
+  padding: 20px;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
   position: relative;
+  overflow: hidden;
+  user-select: none;
 }
 
-.playlist-card:hover {
-  background: #2a2a40;
-}
-
-.playlist-image-wrapper {
+.song-cover {
   position: relative;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
-.playlist-image {
+.song-cover img {
   width: 100%;
   aspect-ratio: 1;
   object-fit: cover;
-  border-radius: 8px;
+  display: block;
+  transition: transform 0.3s ease;
 }
 
-.play-btn {
+.song-card:hover .song-cover img {
+  transform: scale(1.1);
+}
+
+.play-button {
   position: absolute;
-  bottom: 10px;
-  right: 10px;
-  width: 48px;
-  height: 48px;
+  bottom: 12px;
+  right: 12px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   border: none;
   background: #1db954;
   color: #fff;
+  font-size: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.3s;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transform: translateY(10px) scale(0.8);
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 24px rgba(29, 185, 84, 0.4);
 }
 
-.playlist-card:hover .play-btn {
+.song-card:hover .play-button {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
-.playlist-title {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 6px;
-}
-
-.playlist-description {
-  font-size: 13px;
-  color: #b3b3b3;
-  margin-bottom: 8px;
-}
-
-.playlist-songs {
-  font-size: 12px;
-  color: #808080;
-}
-
-/* Trending Songs */
-.trending-container {
-  background: #1e1e30;
-  border-radius: 12px;
-  padding: 20px;
-}
-
-.song-item {
-  display: grid;
-  grid-template-columns: 40px 1fr 200px 80px 120px 40px;
-  align-items: center;
-  gap: 15px;
-  padding: 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.song-item:hover {
-  background: #2a2a40;
-}
-
-.song-number {
-  color: #b3b3b3;
-  font-size: 16px;
-  font-weight: 500;
+.play-button:hover {
+  background: #1ed760;
+  transform: scale(1.1);
 }
 
 .song-info {
-  min-width: 0;
+  flex: 1;
 }
 
 .song-title {
-  font-size: 15px;
-  font-weight: 500;
-  margin-bottom: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #fff;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .song-artist {
-  font-size: 13px;
+  font-size: 14px;
   color: #b3b3b3;
+  margin-bottom: 12px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.song-album {
-  font-size: 13px;
-  color: #b3b3b3;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.song-duration {
-  font-size: 13px;
-  color: #b3b3b3;
+.song-meta {
   display: flex;
   align-items: center;
-  gap: 5px;
-}
-
-.song-plays {
+  gap: 12px;
   font-size: 13px;
-  color: #1db954;
+  color: #808080;
 }
 
-.like-btn {
-  background: none;
-  border: none;
+.duration {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.album-name {
+  font-size: 12px;
+  color: #808080;
+  margin-top: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ============================================
+   ALBUMS GRID
+   ============================================ */
+
+.albums-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.album-card {
+  background: #1a1a2e;
+  border-radius: 16px;
+  padding: 20px;
   cursor: pointer;
-  padding: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  user-select: none;
 }
 
-.like-btn svg {
-  color: #b3b3b3;
-  transition: color 0.2s;
+.album-card:hover {
+  transform: translateY(-8px);
+  border-color: #1db954;
+  background: #16213e;
+  box-shadow: 0 12px 40px rgba(29, 185, 84, 0.15);
 }
 
-.like-btn:hover svg {
-  color: #1db954;
-}
-
-/* New Releases */
-.releases-scroll {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  padding-bottom: 10px;
-}
-
-.releases-scroll::-webkit-scrollbar {
-  height: 6px;
-}
-
-.releases-scroll::-webkit-scrollbar-thumb {
-  background-color: #92929d;
-  border-radius: 5px;
-}
-
-.release-card {
-  min-width: 160px;
-  background: #1e1e30;
+.album-cover {
+  position: relative;
+  margin-bottom: 16px;
   border-radius: 12px;
-  padding: 12px;
-  cursor: pointer;
-  transition: all 0.3s;
+  overflow: hidden;
 }
 
-.release-card:hover {
-  background: #2a2a40;
-  transform: translateY(-5px);
-}
-
-.release-image {
+.album-cover img {
   width: 100%;
   aspect-ratio: 1;
   object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 10px;
+  display: block;
+  transition: transform 0.3s ease;
 }
 
-.release-title {
-  font-size: 14px;
+.album-card:hover .album-cover img {
+  transform: scale(1.05);
+}
+
+.album-info {
+  text-align: left;
+}
+
+.album-title {
+  font-size: 16px;
   font-weight: 600;
-  margin-bottom: 4px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.release-artist {
-  font-size: 12px;
-  color: #b3b3b3;
   margin-bottom: 6px;
+  color: #fff;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.release-date {
-  font-size: 11px;
+.album-artist {
+  font-size: 14px;
+  color: #b3b3b3;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.album-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
   color: #808080;
+}
+
+.year,
+.song-count {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ============================================
+   GENRES GRID
+   ============================================ */
+
+.genres-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.genre-card {
+  background: linear-gradient(135deg, #1db954 0%, #1ed760 100%);
+  border-radius: 16px;
+  padding: 32px 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.genre-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.genre-card:hover::before {
+  opacity: 1;
+}
+
+.genre-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 16px 48px rgba(29, 185, 84, 0.4);
+}
+
+.genre-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.genre-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   LOADING & ERROR STATES
+   ============================================ */
+
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 20px;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(29, 185, 84, 0.1);
+  border-top-color: #1db954;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-spinner p {
+  color: #b3b3b3;
+  font-size: 15px;
+}
+
+.error-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 20px;
+  text-align: center;
+}
+
+.error-message p {
+  color: #ff6b6b;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.retry-button {
+  padding: 12px 32px;
+  border: none;
+  border-radius: 24px;
+  background: #1db954;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.retry-button:hover {
+  background: #1ed760;
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(29, 185, 84, 0.4);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1200px) {
+  .songs-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+
+  .albums-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .explore-container {
+    left: 0;
+    padding: 20px 16px;
+  }
+
+  .songs-grid,
+  .albums-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+  }
+
+  .genres-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+
+  .explore-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 12px;
+  }
+
+  .tab-button {
+    white-space: nowrap;
+  }
 }

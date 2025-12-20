@@ -1,3 +1,5 @@
+// src/components/MusicPlayer/MusicPlayer.jsx
+import { useEffect } from "react";
 import useMusicPlayer from "../../hooks/player/useMusicPlayer";
 
 import LeftPanel from "./LeftPanel";
@@ -6,8 +8,18 @@ import RightPanel from "./RightPanel";
 import PlaylistSidebar from "./PlaylistSidebar";
 import "./MusicPlayer.css";
 
-const MusicPlayer = ({ playlist }) => {
+const MusicPlayer = ({ playlist, initialIndex = 0 }) => {
   const player = useMusicPlayer(playlist);
+
+  /**
+   * Update currentIndex khi initialIndex thay đổi
+   */
+  useEffect(() => {
+    if (initialIndex !== undefined && initialIndex !== player.currentIndex) {
+      player.setCurrentIndex(initialIndex);
+      player.setIsPlaying(true);
+    }
+  }, [initialIndex, playlist]);
 
   return (
     <div className="music-player">

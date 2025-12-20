@@ -1,9 +1,6 @@
-import useHeader from "../../hooks/header/useHeader";
 import "./Header.css";
 
 const Header = () => {
-  const { isLightTheme, handleThemeToggle } = useHeader(false);
-
   return (
     <header>
       <div className="header">
@@ -17,13 +14,6 @@ const Header = () => {
 
         {/* Right Header */}
         <div className="right-header">
-          <div className="toggle-switch">
-            <label className="switch-label">
-              <input type="checkbox" className="checkbox" checked={isLightTheme} onChange={handleThemeToggle} />
-              <span className="slider"></span>
-            </label>
-          </div>
-
           <div className="profile">
             <i className="bx bxs-user"></i>
           </div>
