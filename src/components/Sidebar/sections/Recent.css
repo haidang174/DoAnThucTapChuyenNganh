@@ -1,19 +1,346 @@
-/* Phần "nút" scrollbar */
-.recent::-webkit-scrollbar {
-  width: 6px;
-}
+/* ============================================
+   RECENT CONTAINER
+   ============================================ */
 
-.recent::-webkit-scrollbar-thumb {
-  background-color: #92929d;
-  border-radius: 5px;
-}
-
-.recent {
-  margin-top: 90px;
-  margin-left: 220px;
-  padding: 20px;
-  padding-bottom: 120px;
-  height: calc(100vh - 90px);
+.recent-container {
+  position: fixed;
+  top: 90px;
+  left: 220px;
+  right: 0;
+  bottom: 90px;
+  padding: 30px;
   overflow-y: auto;
   color: #fff;
+}
+
+/* Scrollbar */
+.recent-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.recent-container::-webkit-scrollbar-thumb {
+  background-color: #3e3e3e;
+  border-radius: 4px;
+}
+
+.recent-container::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+.recent-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ============================================
+   TABLE LAYOUT
+   ============================================ */
+
+.recent-table {
+  background: #1a1a2e;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 1fr 250px 150px;
+  gap: 20px;
+  padding: 16px 20px;
+  border-bottom: 1px solid #2a2a2a;
+  font-size: 12px;
+  font-weight: 600;
+  color: #808080;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.table-body {
+  max-height: calc(100vh - 250px);
+  overflow-y: auto;
+}
+
+.table-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.table-body::-webkit-scrollbar-thumb {
+  background-color: #3e3e3e;
+  border-radius: 4px;
+}
+
+.table-body::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 1fr 250px 150px;
+  gap: 20px;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.table-row:hover {
+  background: rgba(247, 37, 133, 0.1);
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+/* ============================================
+   COLUMN 1 - SONG INFO
+   ============================================ */
+
+.col-song {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.song-thumbnail {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.song-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.play-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.table-row:hover .play-overlay {
+  opacity: 1;
+}
+
+.play-overlay:hover {
+  background: rgba(247, 37, 133, 0.8);
+}
+
+.song-details {
+  min-width: 0;
+  flex: 1;
+}
+
+.song-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  margin: 0 0 4px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.table-row:hover .song-title {
+  color: #f72585;
+}
+
+.song-artist {
+  font-size: 12px;
+  color: #b3b3b3;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ============================================
+   COLUMN 2 - ALBUM
+   ============================================ */
+
+.col-album {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  color: #b3b3b3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ============================================
+   COLUMN 3 - DURATION
+   ============================================ */
+
+.col-duration {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 13px;
+  color: #808080;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============================================
+   LOADING STATE
+   ============================================ */
+
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 20px;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(247, 37, 133, 0.1);
+  border-top-color: #f72585;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-spinner p {
+  color: #b3b3b3;
+  font-size: 14px;
+}
+
+/* ============================================
+   ERROR STATE
+   ============================================ */
+
+.error-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 20px;
+  text-align: center;
+}
+
+.error-message p {
+  color: #ff6b6b;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.retry-button {
+  padding: 12px 32px;
+  border: none;
+  border-radius: 24px;
+  background: #f72585;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.retry-button:hover {
+  background: #ff6bb5;
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(247, 37, 133, 0.4);
+}
+
+/* ============================================
+   EMPTY STATE
+   ============================================ */
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+  gap: 20px;
+}
+
+.empty-icon {
+  font-size: 80px;
+  opacity: 0.5;
+  filter: grayscale(1);
+}
+
+.empty-state h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+}
+
+.empty-state p {
+  font-size: 14px;
+  color: #808080;
+  max-width: 400px;
+  margin: 0;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1200px) {
+  .table-header,
+  .table-row {
+    grid-template-columns: 1fr 200px 120px;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .recent-container {
+    left: 0;
+    padding: 20px 16px;
+  }
+
+  .table-header {
+    display: none;
+  }
+
+  .table-row {
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    padding: 12px 16px;
+  }
+
+  .col-album {
+    display: none;
+  }
+
+  .col-song {
+    min-width: 0;
+  }
+
+  .song-thumbnail {
+    width: 40px;
+    height: 40px;
+  }
 }
