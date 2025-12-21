@@ -1,5 +1,5 @@
 // src/App.jsx
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import Header from "./components/Header/Header";
@@ -163,6 +163,7 @@ function App() {
       <Header currentUser={currentUser} onLogout={handleLogout} />
       <Sidebar currentUser={currentUser} />
       <Routes>
+        <Route path="/" element={<Navigate to="/explore" replace />} />
         <Route path="/*" element={<MainContent currentUser={currentUser} onPlaySong={handlePlaySong} onPlayPlaylist={handlePlayPlaylist} />} />
       </Routes>
       <MusicPlayer playlist={playlist} currentUser={currentUser} initialIndex={currentSongIndex} />

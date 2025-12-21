@@ -14,10 +14,11 @@ const MainContent = ({ currentUser, onPlaySong, onPlayPlaylist }) => {
   const { path } = useMainContent();
 
   switch (path) {
-    case "/library":
-      return <Library currentUser={currentUser} onPlaySong={onPlaySong} />;
+    case "/":
     case "/explore":
       return <Explore currentUser={currentUser} onPlaySong={onPlaySong} onPlayPlaylist={onPlayPlaylist} />;
+    case "/library":
+      return <Library currentUser={currentUser} onPlaySong={onPlaySong} />;
     case "/ranking":
       return <Ranking currentUser={currentUser} onPlaySong={onPlaySong} />;
     case "/category":
@@ -31,7 +32,7 @@ const MainContent = ({ currentUser, onPlaySong, onPlayPlaylist }) => {
     case "/album":
       return <Albums currentUser={currentUser} onPlaySong={onPlaySong} onPlayPlaylist={onPlayPlaylist} />;
     default:
-      return <Explore currentUser={currentUser} onPlaySong={onPlaySong} onPlayPlaylist={onPlayPlaylist} />; // mặc định
+      return <Explore currentUser={currentUser} onPlaySong={onPlaySong} onPlayPlaylist={onPlayPlaylist} />;
   }
 };
 
